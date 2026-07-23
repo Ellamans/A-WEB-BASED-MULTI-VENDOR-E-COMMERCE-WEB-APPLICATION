@@ -8,7 +8,7 @@
       <div class="flex {{ 'justify-end' if is_mine else 'justify-start' }}">
         <div class="max-w-[70%] {{ 'bg-violet-600 text-white' if is_mine else 'bg-[#F1EEFB] text-[#1B1330]' }} rounded-2xl px-4 py-2 text-sm">
           {% if msg.image_filename %}
-          <img src="{{ url_for('static', filename='uploads/' + msg.image_filename) }}" class="rounded-xl mb-1 max-w-full">
+          <img src="{{ image_url(msg.image_filename) }}" class="rounded-xl mb-1 max-w-full">
           {% endif %}
           {% if msg.body %}{{ msg.body }}{% endif %}
           <p class="text-[10px] {{ 'text-violet-200' if is_mine else 'text-[#6B6480]' }} mt-1">{{ msg.created_at.strftime('%I:%M %p') }}</p>
