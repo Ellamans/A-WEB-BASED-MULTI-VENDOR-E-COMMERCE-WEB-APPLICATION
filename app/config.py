@@ -51,6 +51,16 @@ class Config:
     FREE_DELIVERY_THRESHOLD = 20000
     FLAT_DELIVERY_FEE = 1500
 
+    # --- Cloudinary (optional) ---
+    # If these are set, uploaded images (products, store logos/banners,
+    # chat images) go to Cloudinary instead of local disk. Use this on
+    # Render's free tier, since its filesystem is wiped on every
+    # redeploy/restart and free tier doesn't support persistent Disks.
+    # Get these from: Cloudinary Dashboard -> Account Details.
+    CLOUDINARY_CLOUD_NAME = os.environ.get("CLOUDINARY_CLOUD_NAME", "")
+    CLOUDINARY_API_KEY = os.environ.get("CLOUDINARY_API_KEY", "")
+    CLOUDINARY_API_SECRET = os.environ.get("CLOUDINARY_API_SECRET", "")
+
     # --- File uploads (product images, store logos/banners) ---
     # NOTE: both Railway and Render use ephemeral filesystems by default —
     # uploaded files are wiped on every redeploy/restart unless you attach

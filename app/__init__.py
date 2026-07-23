@@ -29,6 +29,9 @@ def create_app(config_class=Config):
     def load_user(user_id):
         return db.session.get(User, int(user_id))
 
+    from app.services.uploads import image_url
+    app.jinja_env.globals["image_url"] = image_url
+
     # --- Website blueprints (cookie-session auth via Flask-Login) ---
     from app.auth.routes import auth_bp
     from app.main.routes import main_bp
