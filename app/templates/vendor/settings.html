@@ -9,7 +9,7 @@
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <div class="flex items-center gap-4">
         <div class="w-16 h-16 rounded-full bg-violet-600 text-white flex items-center justify-center text-xl font-bold overflow-hidden">
-          {% if profile.logo_filename %}<img src="{{ url_for('static', filename='uploads/' + profile.logo_filename) }}" class="w-full h-full object-cover">{% else %}{{ profile.store_name[0] }}{% endif %}
+          {% if profile.logo_filename %}<img src="{{ image_url(profile.logo_filename) }}" class="w-full h-full object-cover">{% else %}{{ profile.store_name[0] }}{% endif %}
         </div>
         <div>
           <label class="text-xs font-semibold mb-1.5 block">Store Logo</label>
