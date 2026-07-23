@@ -16,28 +16,6 @@ main_bp = Blueprint("main", __name__)
 import os
 
 
-@main_bp.route("/run-seed-once")
-def run_seed_once():
-    """One-time seed trigger. DELETE THIS ROUTE after you've used it."""
-    provided = request.args.get("key", "")
-    expected = os.environ.get("SEED_SECRET", "")
-
-    if request.args.get("debug") == "1":
-        return {
-            "seed_secret_is_set": bool(expected),
-            "seed_secret_length": len(expected),
-            "provided_key_length": len(provided),
-            "match": provided == expected,
-        }
-
-    if provided != expected:
-        abort(404)
-
-    from seed import run as seed_run
-    seed_run()
-    return "Seed complete. Check your homepage — then delete this route from routes.py."
-
-
 def _applied_coupon():
     code = session.get("coupon_code")
     if not code:
