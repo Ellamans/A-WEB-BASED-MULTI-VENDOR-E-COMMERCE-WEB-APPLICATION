@@ -205,5 +205,5 @@ def serialize_user(u):
 def _upload_url(filename):
     if not filename:
         return None
-    from flask import url_for
-    return url_for("static", filename=f"uploads/{filename}", _external=True)
+    from app.services.uploads import image_url
+    return image_url(filename, external=True)
