@@ -19,12 +19,12 @@
     <div>
       {% if images %}
       <div class="h-96 rounded-3xl overflow-hidden bg-[#F1EEFB]">
-        <img src="{{ url_for('static', filename='uploads/' + images[0].filename) }}" class="w-full h-full object-cover" alt="{{ product.name }}">
+        <img src="{{ image_url(images[0].filename) }}" class="w-full h-full object-cover" alt="{{ product.name }}">
       </div>
       {% if images|length > 1 %}
       <div class="flex gap-2 mt-3">
         {% for img in images %}
-        <img src="{{ url_for('static', filename='uploads/' + img.filename) }}" class="w-16 h-16 rounded-xl object-cover border-2 {{ 'border-violet-600' if loop.first else 'border-transparent' }}">
+        <img src="{{ image_url(img.filename) }}" class="w-16 h-16 rounded-xl object-cover border-2 {{ 'border-violet-600' if loop.first else 'border-transparent' }}">
         {% endfor %}
       </div>
       {% endif %}
